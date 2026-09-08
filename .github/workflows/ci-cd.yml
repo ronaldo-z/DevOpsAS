@@ -30,7 +30,7 @@ jobs:
   # ========= CI =========
   Continuous-Deployment:
     needs: Continuous-Integration # Depende do CI ser bem sucedido
-    runs-om: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Simular Deploy
         run: echo "Testes bem sucedidos!"
