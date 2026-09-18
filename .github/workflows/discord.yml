@@ -1,0 +1,19 @@
+name: Discord Notification
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  Discord:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Discord Webhook
+        uses: Sniddl/discord-commits@v1.8
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          message: "Um novo push foi realizado no repositório DevOpsAS"
+          template: "author-with-link"
+          include-extras: true
