@@ -24,4 +24,6 @@ jobs:
 
       - name: Executar testes com Pytest
         run: |
-          pytest
+          python -m pytest
+        env:
+          PYTHONPATH: .
