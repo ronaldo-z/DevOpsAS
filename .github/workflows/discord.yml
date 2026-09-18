@@ -1,0 +1,23 @@
+name: Discord Notification
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    types: [closed]
+
+jobs:
+  Discord:
+    # Executa se for um push normal ou se for um PR que foi mergeado
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Discord Webhook
+        uses: Sniddl/discord-commits@v1.8
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          message: "Uma nova alteração via ${{ github.event_name }} foi realizada no repositório DevOpsAS!"
+          template: "author-with-link"
+          include-extras: true

@@ -1,0 +1,17 @@
+name: Continuous Deployment
+
+# Gatilho: roda apenas após o workflow CI terminar
+on:
+  workflow_run:
+    workflows: ["Continuous Integration"]
+    types:
+      - completed
+
+jobs:
+  Continuous-Deployment:
+    runs-on: ubuntu-latest
+    # Garante que o deploy só aconteça se o CI foi bem sucedido
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Simular Deploy
+        run: echo "Testes bem sucedidos!"
