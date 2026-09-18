@@ -12,8 +12,12 @@ jobs:
     # Executa se for um push normal ou se for um PR que foi mergeado
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
     runs-on: ubuntu-latest
+    env:
+      ACTIONS_ALLOW_USE_UNECURE_NODE_VERSION: "true"
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Run Discord Webhook
         uses: Sniddl/discord-commits@v1.8
         with:
