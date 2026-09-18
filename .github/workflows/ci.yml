@@ -3,8 +3,10 @@ name: Continuous Integration
 # Gatilho para as branches
 on:
   push:
-    branches:
-      - '**'
+    branches: [ "main", "desenvolvimento" ]
+  pull_request:
+    branches: [ "main", "desenvolvimento" ]
+
 jobs:
   Continuous-Integration:
     runs-on: ubuntu-latest
