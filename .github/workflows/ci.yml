@@ -3,8 +3,8 @@ name: Continuous Integration
 # Gatilho para as branches
 on:
   push:
-    branches: [ "main", "desenvolvimento", "AlertasDiscord" ]
-
+    branches:
+      - '**'
 jobs:
   Continuous-Integration:
     runs-on: ubuntu-latest
